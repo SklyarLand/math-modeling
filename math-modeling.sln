@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1082
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "math-modeling", "math-modeling\math-modeling.csproj", "{A37DD426-00AA-4867-8136-FE288EEE1040}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{C44D952C-BF32-4E60-A472-B5FE47199506}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A37DD426-00AA-4867-8136-FE288EEE1040}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A37DD426-00AA-4867-8136-FE288EEE1040}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A37DD426-00AA-4867-8136-FE288EEE1040}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C44D952C-BF32-4E60-A472-B5FE47199506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C44D952C-BF32-4E60-A472-B5FE47199506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C44D952C-BF32-4E60-A472-B5FE47199506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C44D952C-BF32-4E60-A472-B5FE47199506}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
