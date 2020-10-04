@@ -108,5 +108,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\SearchCore.csproj">
+      <Project>{c44d952c-bf32-4e60-a472-b5fe47199506}</Project>
+      <Name>SearchCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

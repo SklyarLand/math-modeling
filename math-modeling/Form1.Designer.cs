@@ -30,7 +30,14 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Picture = new System.Windows.Forms.PictureBox();
+            this.ResultTime = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.start = new System.Windows.Forms.Button();
+            this.PointsCount = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.SearchedPoints = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -52,6 +59,13 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Panel2.Controls.Add(this.SearchedPoints);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.PointsCount);
+            this.splitContainer1.Panel2.Controls.Add(this.ResultTime);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonSearch);
             this.splitContainer1.Panel2.Controls.Add(this.start);
             this.splitContainer1.Size = new System.Drawing.Size(914, 515);
             this.splitContainer1.SplitterDistance = 671;
@@ -64,18 +78,77 @@
             this.Picture.Location = new System.Drawing.Point(0, 0);
             this.Picture.Name = "Picture";
             this.Picture.Size = new System.Drawing.Size(671, 515);
+            this.Picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Picture.TabIndex = 0;
             this.Picture.TabStop = false;
             // 
+            // ResultTime
+            // 
+            this.ResultTime.Location = new System.Drawing.Point(12, 204);
+            this.ResultTime.Name = "ResultTime";
+            this.ResultTime.Size = new System.Drawing.Size(131, 20);
+            this.ResultTime.TabIndex = 2;
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(46, 130);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(129, 45);
+            this.buttonSearch.TabIndex = 1;
+            this.buttonSearch.Text = "Поиск";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.Search);
+            // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(23, 23);
+            this.start.Location = new System.Drawing.Point(46, 26);
             this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(91, 35);
+            this.start.Size = new System.Drawing.Size(133, 35);
             this.start.TabIndex = 0;
-            this.start.Text = "Start";
+            this.start.Text = "Сгенерировать";
             this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.Run);
+            this.start.Click += new System.EventHandler(this.Generate);
+            // 
+            // PointsCount
+            // 
+            this.PointsCount.Location = new System.Drawing.Point(12, 92);
+            this.PointsCount.Name = "PointsCount";
+            this.PointsCount.Size = new System.Drawing.Size(131, 20);
+            this.PointsCount.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "N точек";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 188);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "затраченное время, мс";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 233);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Точек в окне";
+            // 
+            // SearchedPoints
+            // 
+            this.SearchedPoints.Location = new System.Drawing.Point(12, 249);
+            this.SearchedPoints.Name = "SearchedPoints";
+            this.SearchedPoints.Size = new System.Drawing.Size(131, 20);
+            this.SearchedPoints.TabIndex = 6;
             // 
             // Form1
             // 
@@ -88,6 +161,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).EndInit();
@@ -100,6 +174,13 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PictureBox Picture;
         private System.Windows.Forms.Button start;
+        private System.Windows.Forms.TextBox ResultTime;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox PointsCount;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox SearchedPoints;
     }
 }
 
