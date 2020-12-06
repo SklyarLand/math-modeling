@@ -16,5 +16,24 @@ namespace SearchCore
         }
 
         public string Name { get { return this.SearchName; } }
+
+
+        //сортировка точек по X
+        internal static int XCompare(Point p1, Point p2)
+        {
+            if (p1.X < p2.X)
+                return -1;
+            else
+                return p1.X > p2.X ? 1 : 0;
+        }
+
+        //сортировка точек по Y
+        internal static int YCompare(Point p1, Point p2)
+        {
+            if (p1.Y < p2.Y)
+                return -1;
+            else
+                return p1.Y > p2.Y ? 1 : 0;
+        }
     }
 }

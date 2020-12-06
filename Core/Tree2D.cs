@@ -22,16 +22,11 @@ namespace SearchCore
             //построение дерева, axes: x=0, y=1
             public static TreeNode BuildTree(List<Point> points, int axis)
             {
-                if (points.Count < 1) return null;
                 if (points.Count == 1)//возврат листа
                 {
                     return new TreeNode(points[0]);
                 }
-                if (points.Count > 20) {
-                    var newr = 5; 
-                }
-                //Пирамидальная сортировка
-                //HeapSort(points, compare);
+                //сортировка элементов по нужной оси
                 int nextAxios = 0;
                 if (axis > 0)
                     points.Sort(YCompare);
@@ -47,13 +42,12 @@ namespace SearchCore
                     newRoot.Left = new TreeNode(points[0]);
                     return newRoot;
                 }
-                //определение делегата сравнения на следующем уровне дерева
                 //находим середину списка
                 int pLength = points.Count;
                 int center = (int)(pLength / 2);
                 //создаем новую ветвь
                 TreeNode newNode = new TreeNode(points[center]);
-
+                //делим список на левую и правую часть и передаем их в соответствующие ветви дерева
                 var leftList = points.GetRange(0, center);
                 var rightList = points.GetRange(center + 1, pLength - center - 1);
 
@@ -134,68 +128,5 @@ namespace SearchCore
 
         }
 
-
-        //Алгоритм пирамидальной сортировки
-        /*private void HeapSort(List<Point> list, AxiosComparer compare)
-        {
-            int size = list.Count;
-            for (int i = (size / 2) - 1; i >= 0; i--)
-                siftDown(list, i, size - 1, compare);
-            // Просеиваем через пирамиду остальные элементы
-            for (int i = size - 1; i >= 1; i--)
-            {
-                Swap(list, 0, i);
-                siftDown(list, 0, i - 1, compare);
-            }
-        }
-
-        private void siftDown(List<Point> list, int root, int bottom, AxiosComparer compare)
-        {
-            int maxChild; // индекс максимального потомка
-            bool done = false; // флаг того, что куча сформирована
-                               // Пока не дошли до последнего ряда
-            while ((root * 2 <= bottom) && !done)
-            {
-                if (root * 2 == bottom)    // если мы в последнем ряду,
-                    maxChild = root * 2;    // запоминаем левый потомок
-                                            // иначе запоминаем больший потомок из двух
-                else if (compare( list[root * 2], list[root * 2 + 1]))
-                    maxChild = root * 2;
-                else
-                    maxChild = root * 2 + 1;
-                // если элемент вершины меньше максимального потомка
-                if (compare(list[maxChild], list[root]))
-                {
-                    Swap(list, root, maxChild);
-                    root = maxChild;
-                }
-                else done = true; // пирамида сформирована
-            }
-        }
-
-        protected void Swap(List<Point> list, int i, int j)
-        {
-            var temp = list[i];
-            list[i] = list[j];
-            list[j] = temp;
-        }*/
-
-        //сортировка точек по X
-        private static int XCompare(Point p1, Point p2)
-        {
-            if (p1.X < p2.X)
-                return -1;
-            else
-                return p1.X > p2.X ? 1: 0;
-        }
-
-        //сортировка точек по Y
-        private static int YCompare(Point p1, Point p2)
-        {
-            if (p1.Y < p2.Y)
-                return -1;
-            else
-                return p1.Y > p2.Y ? 1 : 0;
-        }
     }
 }
