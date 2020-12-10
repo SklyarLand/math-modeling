@@ -50,7 +50,7 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SearchTest.cs" />
+    <Compile Include="VectorDominationSearchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

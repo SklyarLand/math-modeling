@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace SearchCore
 {
-    public class VectorDominationSearcher : Search
+    public class VectorDominationSearch : Search
     {
         List<Point> Matrix;
-        public VectorDominationSearcher() : base()
+        public VectorDominationSearch() : base()
         {
             this.SearchName = "Векторное доминирование";
         }
