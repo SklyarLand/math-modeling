@@ -48,8 +48,8 @@ namespace math_modeling
         {
             Random random = new Random();
             List<Point> points = new List<Point>();
-            for (int i = 0; i < pointsCount; i++)
-            //for (int i = 0; i < 1000; i++)
+            //for (int i = 0; i < pointsCount; i++)
+            for (int i = 0; i < 100; i++)
             {
                 int x = random.Next(0, maxX);
                 int y = random.Next(0, maxY);
@@ -107,6 +107,7 @@ namespace math_modeling
             var list = new System.Collections.ArrayList();
             list.Add(new LinearSearch());
             list.Add(new Tree2D());
+            list.Add(new VectorDominationSearcher());
             AlgoritmsList.DataSource = list;
             AlgoritmsList.DisplayMember = "Name";
         }

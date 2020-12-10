@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "math-modeling", "math-model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchCore", "Core\SearchCore.csproj", "{C44D952C-BF32-4E60-A472-B5FE47199506}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{34BF148F-60A8-4D6D-9E78-105197CCC384}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C44D952C-BF32-4E60-A472-B5FE47199506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C44D952C-BF32-4E60-A472-B5FE47199506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C44D952C-BF32-4E60-A472-B5FE47199506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34BF148F-60A8-4D6D-9E78-105197CCC384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34BF148F-60A8-4D6D-9E78-105197CCC384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34BF148F-60A8-4D6D-9E78-105197CCC384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34BF148F-60A8-4D6D-9E78-105197CCC384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

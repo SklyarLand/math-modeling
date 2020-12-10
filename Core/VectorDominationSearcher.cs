@@ -20,13 +20,14 @@ namespace SearchCore
             var listPointsY = points.ToList();
             listPointsX.Sort(XCompare);
             listPointsY.Sort(YCompare);
-            var matrix = CreateZeroMatrix(points.Length+1);
+            int len = points.Length + 1;
+            var matrix = new int[len, len];
 
-            for (int i = 1; i < matrix.Length; i++)
+            for (int i = 1; i < len; i++)
             {
                 var pointY = listPointsY[i - 1];
 
-                for (int j = 1; j < matrix.Length; j++)
+                for (int j = 1; j < len; j++)
                 {
                     var pointX = listPointsX[j - 1];
                     // if are points to the right of the intersection
@@ -57,21 +58,11 @@ namespace SearchCore
 
                 vectorDaminations[i] = matrix[y,x];
             }
-            throw new NotImplementedException();
-        }
-
-        private int[,] CreateZeroMatrix(int length)
-        {
-            var newMatrix = new int[length,length];
-            for (int i = 0; i < length; i++)
+            int pointsLength = vectorDaminations[0] - vectorDaminations[1] - vectorDaminations[3] + vectorDaminations[2];
+            for (int i = 0; i < pointsLength; i++) 
             {
-                var a = new int[length];
-                for (int j = 0; j < length; j++)
-                {
-                    newMatrix[i,j] = 0;
-                }
+                searchedPoins.Add(new Point());
             }
-            return newMatrix;
         }
 
         private int SearchIndexForX(int value, List<Point> points)
@@ -83,15 +74,13 @@ namespace SearchCore
             {
                 return first;
             }
-
             if (points[last].X < value)
             {
                 return last + 1;
             }
-
             while (last - first > 1)
             {
-                var middle = points.Count / 2);
+                int middle = (int)Math.Floor((decimal)(first + last) / 2);
 
                 if (points[middle].X > value)
                 {
@@ -102,7 +91,6 @@ namespace SearchCore
                     first = middle;
                 }
             }
-
             if (points[last].X >= value)
             {
                 return last;
@@ -130,7 +118,7 @@ namespace SearchCore
 
             while (last - first > 1)
             {
-                var middle = points.Count / 2);
+                int middle = (int)Math.Floor((decimal)(first + last) / 2);
 
                 if (points[middle].Y > value)
                 {
