@@ -16,10 +16,13 @@ namespace SearchCore
         }
         public override void Run(Point[] points, Rectangle window)
         {
+            searchedPoins = new List<Point>();
+
             var listPointsX = points.ToList();
             var listPointsY = points.ToList();
             listPointsX.Sort(XCompare);
             listPointsY.Sort(YCompare);
+
             int len = points.Length + 1;
             var matrix = new int[len, len];
 
