@@ -49,10 +49,10 @@ namespace SearchCore
 
             var vectorDaminations = new int[4];
             var rectangle = new Point[] {
-                new Point{ X = window.Right, Y = window.Bottom },
-                new Point{ X = window.X, Y = window.Bottom },
-                new Point{ X = window.X, Y = window.Y },
-                new Point{ X = window.Right, Y = window.Y },
+                new Point{ X = window.Right-1, Y = window.Bottom-1 },
+                new Point{ X = window.X+1, Y = window.Bottom-1 },
+                new Point{ X = window.X+1, Y = window.Y+1 },
+                new Point{ X = window.Right-1, Y = window.Y+1 },
             };
             for (int i = 0; i < 4; i++)
             {

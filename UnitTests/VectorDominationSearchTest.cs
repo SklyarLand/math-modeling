@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SearchCore;
 
@@ -92,7 +94,16 @@ namespace UnitTests
             new Point(){ X=10, Y=20},
             new Point(){ X=11, Y=20}
         };
-
+        private Point[] equalPoints = new Point[]
+        {
+            new Point(){ X=13, Y=14},
+            new Point(){ X=13, Y=14},
+            new Point(){ X=1, Y=11},
+            new Point(){ X=1, Y=11},
+            new Point(){ X=1, Y=10},
+            new Point(){ X=29, Y=19},
+            new Point(){ X=29, Y=19},
+        };
         [TestMethod]
         public void pxWithin()
         {
@@ -165,6 +176,53 @@ namespace UnitTests
             lSearch.Run(borderCornerPoints, window);
 
             Assert.AreEqual(lSearch.searchedPoins.Count, vdSearch.searchedPoins.Count);
+        }
+
+        [TestMethod]
+        public void CheckEqualPoints()
+        {
+            var vdSearch = new VectorDominationSearch();
+            var lSearch = new LinearSearch();
+
+            vdSearch.Run(equalPoints, window);
+            lSearch.Run(equalPoints, window);
+
+            Assert.AreEqual(lSearch.searchedPoins.Count, vdSearch.searchedPoins.Count);
+        }
+
+        [TestMethod]
+        public void CheckAllPoints()
+        {
+            var vdSearch = new VectorDominationSearch();
+            var lSearch = new LinearSearch();
+            var wholeArray = ConcatArrays<Point>(
+                points1, 
+                points2, 
+                points3, 
+                cornerPointsOutside,
+                borderPoints,
+                borderCornerPoints,
+                equalPoints
+                );
+            List<Point> copiesArray = new List<Point>();
+            Point[] cloneArray = new Point[wholeArray.Length];
+            wholeArray.CopyTo(cloneArray, 0);
+            vdSearch.Run(wholeArray, window);
+            lSearch.Run(wholeArray, window);
+
+            Assert.AreEqual(lSearch.searchedPoins.Count, vdSearch.searchedPoins.Count);
+        }
+
+        public static T[] ConcatArrays<T>(params T[][] list)
+        {
+            var result = new T[list.Sum(a => a.Length)];
+            int offset = 0;
+            for (int x = 0; x < list.Length; x++)
+            {
+                list[x].CopyTo(result, offset);
+                offset += list[x].Length;
+            }
+            return result;
         }
     }
 }
