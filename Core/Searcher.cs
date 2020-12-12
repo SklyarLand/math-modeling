@@ -16,7 +16,7 @@ namespace SearchCore
             this.search = search;
         }
 
-        public void RunSearch(Point[] points, Rectangle window) 
+        public void RunSearch(Point[] points, Rectangle window)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -25,7 +25,7 @@ namespace SearchCore
             milliseconds = stopwatch.ElapsedMilliseconds;
         }
 
-        public Point[] GetSearchedPoints() 
+        public Point[] GetSearchedPoints()
         {
             return search.searchedPoins.ToArray();
         }

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
 namespace SearchCore
 {
-    public class Tree2D : Search
+    public class Tree2D : Search, IPreprocessable
     {
         private TreeNode Tree;
         internal class TreeNode
@@ -57,22 +56,19 @@ namespace SearchCore
             }
         }
 
-        public Tree2D() :base()
+        public Tree2D() : base()
         {
             this.SearchName = "2D дерево";
         }
 
         public override void Run(Point[] points, Rectangle window)
         {
-            //строим дерево, в начале сортируем по X
-            Tree = TreeNode.BuildTree(points.ToList(), 0);
-            searchedPoins = new List<Point>();
-            var windowWithoutBorders = new Rectangle(window.X + 1, window.Y + 1, window.Width - 2, window.Height - 2);
-            TreeTraversal(Tree, windowWithoutBorders, 0);
+            Preprocess(points);
+            SearchAfterProprocessing(window);
         }
 
         //Поиск по дереву, axes: x=0, y=1
-        private void TreeTraversal(TreeNode node, Rectangle window, int axis) 
+        private void TreeTraversal(TreeNode node, Rectangle window, int axis)
         {
             if (node == null)
                 return;
@@ -82,11 +78,11 @@ namespace SearchCore
                 if (window.Right >= point.X && window.Bottom >= point.Y)
                     searchedPoins.Add(point);
             //если у нее нет потомков
-            if (node.Left == null && node.Right == null) 
+            if (node.Left == null && node.Right == null)
             {
                 return;
             }
-            
+
             if (axis > 0)
             {
                 if (window.Top <= point.Y && window.Bottom >= point.Y)
@@ -101,12 +97,12 @@ namespace SearchCore
                 {
                     TreeTraversal(node.Left, window, 0);
                 }
-                else 
+                else
                 {
                     TreeTraversal(node.Right, window, 0);
                 }
             }
-            else 
+            else
             {
                 if (window.Left <= point.X && window.Right >= point.X)
                 {
@@ -128,5 +124,17 @@ namespace SearchCore
 
         }
 
+        public void Preprocess(Point[] points)
+        {
+            //строим дерево, в начале сортируем по X
+            Tree = TreeNode.BuildTree(points.ToList(), 0);
+            searchedPoins = new List<Point>();
+        }
+
+        public void SearchAfterProprocessing(Rectangle window)
+        {
+            var windowWithoutBorders = new Rectangle(window.X + 1, window.Y + 1, window.Width - 2, window.Height - 2);
+            TreeTraversal(Tree, windowWithoutBorders, 0);
+        }
     }
 }

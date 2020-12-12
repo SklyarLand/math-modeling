@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPreprocessable.cs" />
     <Compile Include="Tree2D.cs" />
     <Compile Include="LinearSearch.cs" />
     <Compile Include="Search.cs" />

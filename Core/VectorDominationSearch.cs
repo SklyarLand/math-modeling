@@ -2,49 +2,59 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SearchCore
 {
-    public class VectorDominationSearch : Search
+    public class VectorDominationSearch : Search, IPreprocessable
     {
-        List<Point> Matrix;
+        int[,] Matrix;
+        List<Point> xSearchedList;
+        List<Point> ySearchedList;
         public VectorDominationSearch() : base()
         {
             this.SearchName = "Векторное доминирование";
         }
-        public override void Run(Point[] points, Rectangle window)
+
+        public void Preprocess(Point[] points)
         {
             searchedPoins = new List<Point>();
 
-            var listPointsX = points.ToList();
-            var listPointsY = points.ToList();
-            listPointsX.Sort(XCompare);
-            listPointsY.Sort(YCompare);
+            xSearchedList = points.ToList();
+            ySearchedList = points.ToList();
+            xSearchedList.Sort(XCompare);
+            ySearchedList.Sort(YCompare);
 
             int len = points.Length + 1;
-            var matrix = new int[len, len];
+            Matrix = new int[len, len];
 
             for (int i = 1; i < len; i++)
             {
-                var pointY = listPointsY[i - 1];
+                var pointY = ySearchedList[i - 1];
 
                 for (int j = 1; j < len; j++)
                 {
-                    var pointX = listPointsX[j - 1];
+                    var pointX = xSearchedList[j - 1];
 
                     if (pointX.X >= pointY.X)
                     {
-                        matrix[i,j] = matrix[i - 1,j] + 1;
+                        Matrix[i, j] = Matrix[i - 1, j] + 1;
                     }
                     else
                     {
-                        matrix[i,j] = matrix[i - 1,j];
+                        Matrix[i, j] = Matrix[i - 1, j];
                     }
                 }
             }
+        }
 
+        public override void Run(Point[] points, Rectangle window)
+        {
+            Preprocess(points);
+            SearchAfterProprocessing(window);
+        }
+
+        public void SearchAfterProprocessing(Rectangle window)
+        {
             var vectorDaminations = new int[4];
             var rectangle = new Point[] {
                 new Point{ X = window.Right, Y = window.Bottom },
@@ -54,16 +64,12 @@ namespace SearchCore
             };
             for (int i = 0; i < 4; i++)
             {
-                var x = SearchIndexForX(rectangle[i].X, listPointsX);
-                var y = SearchIndexForY(rectangle[i].Y, listPointsY);
+                var x = SearchIndexForX(rectangle[i].X, xSearchedList);
+                var y = SearchIndexForY(rectangle[i].Y, ySearchedList);
 
-                vectorDaminations[i] = matrix[y,x];
+                vectorDaminations[i] = Matrix[y, x];
             }
             int pointsLength = vectorDaminations[0] - vectorDaminations[1] - vectorDaminations[3] + vectorDaminations[2];
-            for (int i = 0; i < pointsLength; i++) 
-            {
-                searchedPoins.Add(new Point());
-            }
         }
 
         private int SearchIndexForX(int value, List<Point> points)
