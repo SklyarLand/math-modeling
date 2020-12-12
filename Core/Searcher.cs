@@ -7,10 +7,12 @@ namespace SearchCore
     {
         private Search search;
         private long milliseconds;
+
         public long Milliseconds
         {
             get { return milliseconds; }
         }
+
         public Searcher(Search search)
         {
             this.search = search;

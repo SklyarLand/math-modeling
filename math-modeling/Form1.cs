@@ -13,9 +13,9 @@ namespace math_modeling
         private double minPointsFactor = 0.2;
         private double maxPointsFactor = 0.4;
 
-        Point[] points;
-        Rectangle searchWindow;
-        Graphics g;
+        private Point[] points;
+        private Rectangle searchWindow;
+        private Graphics g;
 
 
         public Form1()

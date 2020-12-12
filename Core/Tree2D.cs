@@ -7,54 +7,6 @@ namespace SearchCore
     public class Tree2D : Search, IPreprocessable
     {
         private TreeNode Tree;
-        internal class TreeNode
-        {
-            public Point Point { get; set; }
-            public TreeNode Left { get; set; }
-            public TreeNode Right { get; set; }
-
-            public TreeNode(Point point)
-            {
-                Point = point;
-            }
-
-            //построение дерева, axes: x=0, y=1
-            public static TreeNode BuildTree(List<Point> points, int axis)
-            {
-                if (points.Count == 1)//возврат листа
-                {
-                    return new TreeNode(points[0]);
-                }
-                //сортировка элементов по нужной оси
-                int nextAxios = 0;
-                if (axis > 0)
-                    points.Sort(YCompare);
-                else
-                {
-                    points.Sort(XCompare);
-                    nextAxios = 1;
-                }
-                //возврат корня с 1 листом
-                if (points.Count == 2)
-                {
-                    TreeNode newRoot = new TreeNode(points[1]);
-                    newRoot.Left = new TreeNode(points[0]);
-                    return newRoot;
-                }
-                //находим середину списка
-                int pLength = points.Count;
-                int center = (int)(pLength / 2);
-                //создаем новую ветвь
-                TreeNode newNode = new TreeNode(points[center]);
-                //делим список на левую и правую часть и передаем их в соответствующие ветви дерева
-                var leftList = points.GetRange(0, center);
-                var rightList = points.GetRange(center + 1, pLength - center - 1);
-
-                newNode.Left = BuildTree(leftList, nextAxios);
-                newNode.Right = BuildTree(rightList, nextAxios);
-                return newNode;
-            }
-        }
 
         public Tree2D() : base()
         {
@@ -66,6 +18,19 @@ namespace SearchCore
             Preprocess(points);
             SearchAfterProprocessing(window);
             searchedCount = searchedPoins.Count;
+        }
+
+        public void Preprocess(Point[] points)
+        {
+            //строим дерево, в начале сортируем по X
+            Tree = TreeNode.BuildTree(points.ToList(), 0);
+            searchedPoins = new List<Point>();
+        }
+
+        public void SearchAfterProprocessing(Rectangle window)
+        {
+            var windowWithoutBorders = new Rectangle(window.X + 1, window.Y + 1, window.Width - 2, window.Height - 2);
+            TreeTraversal(Tree, windowWithoutBorders, 0);
         }
 
         //Поиск по дереву, axes: x=0, y=1
@@ -125,17 +90,53 @@ namespace SearchCore
 
         }
 
-        public void Preprocess(Point[] points)
+        internal class TreeNode
         {
-            //строим дерево, в начале сортируем по X
-            Tree = TreeNode.BuildTree(points.ToList(), 0);
-            searchedPoins = new List<Point>();
-        }
+            public Point Point { get; set; }
+            public TreeNode Left { get; set; }
+            public TreeNode Right { get; set; }
 
-        public void SearchAfterProprocessing(Rectangle window)
-        {
-            var windowWithoutBorders = new Rectangle(window.X + 1, window.Y + 1, window.Width - 2, window.Height - 2);
-            TreeTraversal(Tree, windowWithoutBorders, 0);
+            public TreeNode(Point point)
+            {
+                Point = point;
+            }
+
+            //построение дерева, axes: x=0, y=1
+            public static TreeNode BuildTree(List<Point> points, int axis)
+            {
+                if (points.Count == 1)//возврат листа
+                {
+                    return new TreeNode(points[0]);
+                }
+                //сортировка элементов по нужной оси
+                int nextAxios = 0;
+                if (axis > 0)
+                    points.Sort(YCompare);
+                else
+                {
+                    points.Sort(XCompare);
+                    nextAxios = 1;
+                }
+                //возврат корня с 1 листом
+                if (points.Count == 2)
+                {
+                    TreeNode newRoot = new TreeNode(points[1]);
+                    newRoot.Left = new TreeNode(points[0]);
+                    return newRoot;
+                }
+                //находим середину списка
+                int pLength = points.Count;
+                int center = (int)(pLength / 2);
+                //создаем новую ветвь
+                TreeNode newNode = new TreeNode(points[center]);
+                //делим список на левую и правую часть и передаем их в соответствующие ветви дерева
+                var leftList = points.GetRange(0, center);
+                var rightList = points.GetRange(center + 1, pLength - center - 1);
+
+                newNode.Left = BuildTree(leftList, nextAxios);
+                newNode.Right = BuildTree(rightList, nextAxios);
+                return newNode;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ namespace SearchCore
         {
             this.SearchName = "Линейный поиск";
         }
+
         public override void Run(Point[] points, Rectangle rectangle)
         {
             searchedPoins = new List<Point>();

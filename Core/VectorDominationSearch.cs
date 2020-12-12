@@ -10,9 +10,16 @@ namespace SearchCore
         int[,] Matrix;
         List<Point> xSearchedList;
         List<Point> ySearchedList;
+
         public VectorDominationSearch() : base()
         {
             this.SearchName = "Векторное доминирование";
+        }
+
+        public override void Run(Point[] points, Rectangle window)
+        {
+            Preprocess(points);
+            SearchAfterProprocessing(window);
         }
 
         public void Preprocess(Point[] points)
@@ -45,12 +52,6 @@ namespace SearchCore
                     }
                 }
             }
-        }
-
-        public override void Run(Point[] points, Rectangle window)
-        {
-            Preprocess(points);
-            SearchAfterProprocessing(window);
         }
 
         public void SearchAfterProprocessing(Rectangle window)
