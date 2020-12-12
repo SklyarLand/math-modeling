@@ -33,15 +33,13 @@ namespace SearchCore
                 for (int j = 1; j < len; j++)
                 {
                     var pointX = listPointsX[j - 1];
-                    // if are points to the right of the intersection
+
                     if (pointX.X >= pointY.X)
                     {
-                        // current cell assign buttom cell plus 1
                         matrix[i,j] = matrix[i - 1,j] + 1;
                     }
                     else
                     {
-                        // current cell assign buttom cell
                         matrix[i,j] = matrix[i - 1,j];
                     }
                 }
@@ -49,10 +47,10 @@ namespace SearchCore
 
             var vectorDaminations = new int[4];
             var rectangle = new Point[] {
-                new Point{ X = window.Right-1, Y = window.Bottom-1 },
-                new Point{ X = window.X+1, Y = window.Bottom-1 },
-                new Point{ X = window.X+1, Y = window.Y+1 },
-                new Point{ X = window.Right-1, Y = window.Y+1 },
+                new Point{ X = window.Right, Y = window.Bottom },
+                new Point{ X = window.X, Y = window.Bottom },
+                new Point{ X = window.X, Y = window.Y },
+                new Point{ X = window.Right, Y = window.Y },
             };
             for (int i = 0; i < 4; i++)
             {

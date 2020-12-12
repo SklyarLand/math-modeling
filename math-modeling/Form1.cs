@@ -32,8 +32,9 @@ namespace math_modeling
             Random random = new Random();
 
             int pointsCount = random.Next((int)(pixelCount * minPointsFactor), (int)(pixelCount * maxPointsFactor));
-            points = GetRandomPoints(pointsCount, pwidth, pheight);
+            
             searchWindow = GetSearchWindow(pwidth, pheight);
+            points = GetRandomPoints(pointsCount, pwidth, pheight);
 
             Picture.Image = new Bitmap(pwidth, pheight);
             this.g = Graphics.FromImage((Bitmap)Picture.Image);
@@ -48,16 +49,21 @@ namespace math_modeling
         {
             Random random = new Random();
             List<Point> points = new List<Point>();
+            HashSet<Point> pointsHashset = new HashSet<Point>();
             //for (int i = 0; i < pointsCount; i++)
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 1000; i++)
             {
-                int x = random.Next(0, maxX);
-                int y = random.Next(0, maxY);
+                Point point;
+                do
+                {
+                    int x = random.Next(0, maxX);
+                    int y = random.Next(0, maxY);
 
-                Point point = new Point() { X = x, Y = y };
+                    point = new Point() { X = x, Y = y };
+                } while (pointsHashset.Contains(point) || PointsOnBorderWindow(point));
+                pointsHashset.Add(point);
                 points.Add(point);
             }
-
             return points.ToArray();
         }
 
@@ -110,6 +116,13 @@ namespace math_modeling
             list.Add(new VectorDominationSearch());
             AlgoritmsList.DataSource = list;
             AlgoritmsList.DisplayMember = "Name";
+        }
+
+        private bool PointsOnBorderWindow(Point point) 
+        {
+            if (searchWindow == null) return false;
+            return ((point.X == searchWindow.Left || point.X == searchWindow.Right) && (point.Y >= searchWindow.Top && point.Y <= searchWindow.Bottom)) ||
+                ((point.Y == searchWindow.Top || point.Y == searchWindow.Bottom) && (point.X >= searchWindow.Left && point.X <= searchWindow.Right));
         }
     }
 }
