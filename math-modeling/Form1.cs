@@ -89,7 +89,7 @@ namespace math_modeling
             PaintPoints(points, Color.Red);
             var searchedPoints = searcher.GetSearchedPoints();
             PaintPoints(searchedPoints, Color.Yellow);
-            SearchedPoints.Text = searchedPoints.Length.ToString();
+            SearchedPoints.Text = search.searchedCount.ToString();
         }
 
         void PaintSearchWindow()

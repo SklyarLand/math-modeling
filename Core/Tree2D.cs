@@ -65,6 +65,7 @@ namespace SearchCore
         {
             Preprocess(points);
             SearchAfterProprocessing(window);
+            searchedCount = searchedPoins.Count;
         }
 
         //Поиск по дереву, axes: x=0, y=1

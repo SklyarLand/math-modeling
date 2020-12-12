@@ -7,6 +7,7 @@ namespace SearchCore
     {
         protected string SearchName;
         public List<Point> searchedPoins { get; set; }
+        public int searchedCount { get; set; }
 
         public abstract void Run(Point[] points, Rectangle window);
 

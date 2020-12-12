@@ -18,6 +18,7 @@ namespace SearchCore
                     if (rectangle.Right > point.X && rectangle.Bottom > point.Y)
                         searchedPoins.Add(point);
             }
+            searchedCount = searchedPoins.Count;
         }
     }
 }

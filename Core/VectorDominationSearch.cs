@@ -69,7 +69,7 @@ namespace SearchCore
 
                 vectorDaminations[i] = Matrix[y, x];
             }
-            int pointsLength = vectorDaminations[0] - vectorDaminations[1] - vectorDaminations[3] + vectorDaminations[2];
+            searchedCount = vectorDaminations[0] - vectorDaminations[1] - vectorDaminations[3] + vectorDaminations[2];
         }
 
         private int SearchIndexForX(int value, List<Point> points)

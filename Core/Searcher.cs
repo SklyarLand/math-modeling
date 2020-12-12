@@ -29,6 +29,9 @@ namespace SearchCore
         {
             return search.searchedPoins.ToArray();
         }
-
+        public int GetSearchedCount()
+        {
+            return search.searchedCount;
+        }
     }
 }
