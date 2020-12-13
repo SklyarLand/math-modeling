@@ -13,17 +13,41 @@ namespace SearchCore
         {
             [10] = new Dictionary<Search, int[]>
             {
-                [new LinearSearch()] = new int[] { 100000 },
-                [new VectorDominationSearch()] = new int[] { 1000, 100000 },
-                [new Tree2D()] = new int[] { 100000, 1000000 }
+                [new LinearSearch()] = new int[] { 400000 },
+                [new VectorDominationSearch()] = new int[] { 4000, 400000 },
+                [new Tree2D()] = new int[] { 400000, 4000000 }
+            },
+            [25] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 200000 },
+                [new VectorDominationSearch()] = new int[] { 2000, 200000 },
+                [new Tree2D()] = new int[] { 200000, 2000000 }
             },
             [50] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 80000 },
+                [new VectorDominationSearch()] = new int[] { 800, 80000 },
+                [new Tree2D()] = new int[] { 80000, 800000 }
+            },
+            [70] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 60000 },
+                [new VectorDominationSearch()] = new int[] { 600, 60000 },
+                [new Tree2D()] = new int[] { 60000, 600000 }
+            },
+            [100] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 40000 },
+                [new VectorDominationSearch()] = new int[] { 400, 40000 },
+                [new Tree2D()] = new int[] { 40000, 400000 }
+            },
+            [230] = new Dictionary<Search, int[]>
             {
                 [new LinearSearch()] = new int[] { 20000 },
                 [new VectorDominationSearch()] = new int[] { 200, 20000 },
                 [new Tree2D()] = new int[] { 20000, 200000 }
             },
-            [100] = new Dictionary<Search, int[]>
+            [370] = new Dictionary<Search, int[]>
             {
                 [new LinearSearch()] = new int[] { 10000 },
                 [new VectorDominationSearch()] = new int[] { 100, 10000 },
@@ -31,11 +55,41 @@ namespace SearchCore
             },
             [500] = new Dictionary<Search, int[]>
             {
+                [new LinearSearch()] = new int[] { 8000 },
+                [new VectorDominationSearch()] = new int[] { 80, 8000 },
+                [new Tree2D()] = new int[] { 8000, 80000 }
+            },
+            [670] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 7000 },
+                [new VectorDominationSearch()] = new int[] { 70, 7000 },
+                [new Tree2D()] = new int[] { 7000, 70000 }
+            },
+            [840] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 6000 },
+                [new VectorDominationSearch()] = new int[] { 60, 6000 },
+                [new Tree2D()] = new int[] { 6000, 60000 }
+            },
+            [1000] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 4000 },
+                [new VectorDominationSearch()] = new int[] { 40, 4000 },
+                [new Tree2D()] = new int[] { 4000, 40000 }
+            },
+            [2000] = new Dictionary<Search, int[]>
+            {
                 [new LinearSearch()] = new int[] { 2000 },
                 [new VectorDominationSearch()] = new int[] { 20, 2000 },
                 [new Tree2D()] = new int[] { 2000, 20000 }
             },
-            [1000] = new Dictionary<Search, int[]>
+            [3000] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 1500 },
+                [new VectorDominationSearch()] = new int[] { 15, 1500 },
+                [new Tree2D()] = new int[] { 1500, 15000 }
+            },
+            [4000] = new Dictionary<Search, int[]>
             {
                 [new LinearSearch()] = new int[] { 1000 },
                 [new VectorDominationSearch()] = new int[] { 10, 1000 },
@@ -43,15 +97,21 @@ namespace SearchCore
             },
             [5000] = new Dictionary<Search, int[]>
             {
-                [new LinearSearch()] = new int[] { 200 },
-                [new VectorDominationSearch()] = new int[] { 2, 200 },
-                [new Tree2D()] = new int[] { 200, 2000 }
+                [new LinearSearch()] = new int[] { 800 },
+                [new VectorDominationSearch()] = new int[] { 8, 800 },
+                [new Tree2D()] = new int[] { 800, 8000 }
             },
             [10000] = new Dictionary<Search, int[]>
             {
-                [new LinearSearch()] = new int[] { 100 },
-                [new VectorDominationSearch()] = new int[] { 1, 100 },
-                [new Tree2D()] = new int[] { 50, 500 }
+                [new LinearSearch()] = new int[] { 400 },
+                [new VectorDominationSearch()] = new int[] { 4, 400 },
+                [new Tree2D()] = new int[] { 200, 2000 }
+            },
+            [15000] = new Dictionary<Search, int[]>
+            {
+                [new LinearSearch()] = new int[] { 200 },
+                [new VectorDominationSearch()] = new int[] { 2, 200 },
+                [new Tree2D()] = new int[] { 100, 1000 }
             }
         }; 
 

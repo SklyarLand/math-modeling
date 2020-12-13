@@ -54,6 +54,7 @@ namespace SearchCore
 
         public void SearchAfterProprocessing(Rectangle window)
         {
+            searchedCount = 0;
             searchedPoins = new List<Point>();
             var vectorDaminations = new int[4];
             var rectangle = new Point[] {
