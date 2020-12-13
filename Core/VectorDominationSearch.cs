@@ -24,8 +24,6 @@ namespace SearchCore
 
         public void Preprocess(Point[] points)
         {
-            searchedPoins = new List<Point>();
-
             xSearchedList = points.ToList();
             ySearchedList = points.ToList();
             xSearchedList.Sort(XCompare);
@@ -56,6 +54,7 @@ namespace SearchCore
 
         public void SearchAfterProprocessing(Rectangle window)
         {
+            searchedPoins = new List<Point>();
             var vectorDaminations = new int[4];
             var rectangle = new Point[] {
                 new Point{ X = window.Right, Y = window.Bottom },

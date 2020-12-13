@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace math_modeling
+namespace DB
 {
-    class DBUtils
+    class DataBase
     {
         public static MySqlConnection GetDBConnection()
         {
@@ -17,7 +17,7 @@ namespace math_modeling
             string username = "root";
             string password = "root";
 
-            return DBMySQLUtils.GetDBConnection(host, port, database, username, password);
+            return DBMySQL.GetDBConnection(host, port, database, username, password);
         }
     }
 }

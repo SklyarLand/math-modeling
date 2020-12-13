@@ -30,6 +30,10 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.Picture = new System.Windows.Forms.PictureBox();
+            this.PointsGenerated = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.AlgoritmsList = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SearchedPoints = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,8 +42,7 @@
             this.ResultTime = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.start = new System.Windows.Forms.Button();
-            this.AlgoritmsList = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +64,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.PointsGenerated);
+            this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.AlgoritmsList);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
@@ -86,10 +92,43 @@
             this.Picture.TabIndex = 0;
             this.Picture.TabStop = false;
             // 
+            // PointsGenerated
+            // 
+            this.PointsGenerated.Location = new System.Drawing.Point(12, 149);
+            this.PointsGenerated.Name = "PointsGenerated";
+            this.PointsGenerated.Size = new System.Drawing.Size(131, 20);
+            this.PointsGenerated.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 133);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Сгенерировано точек:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 192);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Выберите Алгоритм";
+            // 
+            // AlgoritmsList
+            // 
+            this.AlgoritmsList.FormattingEnabled = true;
+            this.AlgoritmsList.Location = new System.Drawing.Point(12, 208);
+            this.AlgoritmsList.Name = "AlgoritmsList";
+            this.AlgoritmsList.Size = new System.Drawing.Size(120, 56);
+            this.AlgoritmsList.TabIndex = 8;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 311);
+            this.label3.Location = new System.Drawing.Point(9, 357);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 7;
@@ -97,7 +136,7 @@
             // 
             // SearchedPoints
             // 
-            this.SearchedPoints.Location = new System.Drawing.Point(12, 327);
+            this.SearchedPoints.Location = new System.Drawing.Point(12, 373);
             this.SearchedPoints.Name = "SearchedPoints";
             this.SearchedPoints.Size = new System.Drawing.Size(131, 20);
             this.SearchedPoints.TabIndex = 6;
@@ -105,7 +144,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 272);
+            this.label2.Location = new System.Drawing.Point(9, 318);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(126, 13);
             this.label2.TabIndex = 5;
@@ -116,9 +155,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.Size = new System.Drawing.Size(174, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "N точек";
+            this.label1.Text = "Количество точек для генерации";
             // 
             // PointsCount
             // 
@@ -129,14 +168,14 @@
             // 
             // ResultTime
             // 
-            this.ResultTime.Location = new System.Drawing.Point(12, 288);
+            this.ResultTime.Location = new System.Drawing.Point(12, 334);
             this.ResultTime.Name = "ResultTime";
             this.ResultTime.Size = new System.Drawing.Size(131, 20);
             this.ResultTime.TabIndex = 2;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(46, 224);
+            this.buttonSearch.Location = new System.Drawing.Point(46, 270);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(129, 45);
             this.buttonSearch.TabIndex = 1;
@@ -154,22 +193,15 @@
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.Generate);
             // 
-            // AlgoritmsList
+            // button1
             // 
-            this.AlgoritmsList.FormattingEnabled = true;
-            this.AlgoritmsList.Location = new System.Drawing.Point(12, 149);
-            this.AlgoritmsList.Name = "AlgoritmsList";
-            this.AlgoritmsList.Size = new System.Drawing.Size(120, 56);
-            this.AlgoritmsList.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 133);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Выберите Алгоритм";
+            this.button1.Location = new System.Drawing.Point(12, 458);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(215, 45);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Перейти к анализу";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.To_Analize_Click);
             // 
             // Form1
             // 
@@ -205,6 +237,9 @@
         private System.Windows.Forms.TextBox SearchedPoints;
         private System.Windows.Forms.ListBox AlgoritmsList;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox PointsGenerated;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
     }
 }
 

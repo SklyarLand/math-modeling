@@ -31,7 +31,19 @@ namespace math_modeling
 
             Random random = new Random();
 
-            int pointsCount = random.Next((int)(pixelCount * minPointsFactor), (int)(pixelCount * maxPointsFactor));
+            var strCount = PointsCount.Text;
+            var maxPoints = random.Next((int)(pixelCount * minPointsFactor), (int)(pixelCount * maxPointsFactor));
+            int pointsCount;
+            try {
+                pointsCount = Int32.Parse(strCount);
+                if (pointsCount < 1 || pointsCount > maxPoints)
+                {
+                    pointsCount = maxPoints;
+                }
+            } catch
+            {
+                pointsCount = maxPoints;
+            }
             
             searchWindow = GetSearchWindow(pwidth, pheight);
             points = GetRandomPoints(pointsCount, pwidth, pheight);
@@ -42,7 +54,7 @@ namespace math_modeling
 
             PaintSearchWindow();
             PaintPoints(points, Color.Red);
-            this.PointsCount.Text = points.Length.ToString();
+            this.PointsGenerated.Text = points.Length.ToString();
         }
 
         public Point[] GetRandomPoints(int pointsCount, int maxX, int maxY) 
@@ -50,8 +62,8 @@ namespace math_modeling
             Random random = new Random();
             List<Point> points = new List<Point>();
             HashSet<Point> pointsHashset = new HashSet<Point>();
-            //for (int i = 0; i < pointsCount; i++)
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < pointsCount; i++)
+            //for (int i = 0; i < 1000; i++)
             {
                 Point point;
                 do
@@ -123,6 +135,12 @@ namespace math_modeling
             if (searchWindow == null) return false;
             return ((point.X == searchWindow.Left || point.X == searchWindow.Right) && (point.Y >= searchWindow.Top && point.Y <= searchWindow.Bottom)) ||
                 ((point.Y == searchWindow.Top || point.Y == searchWindow.Bottom) && (point.X >= searchWindow.Left && point.X <= searchWindow.Right));
+        }
+
+        private void To_Analize_Click(object sender, EventArgs e)
+        {
+            AnalizeForm2 frm = new AnalizeForm2();
+            frm.Show();
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace math_modeling
+namespace DB
 {
-    class DBMySQLUtils
+    public class DBMySQL
     {
         public static MySqlConnection
                  GetDBConnection(string host, int port, string database, string username, string password)

@@ -17,20 +17,20 @@ namespace SearchCore
         {
             Preprocess(points);
             SearchAfterProprocessing(window);
-            searchedCount = searchedPoins.Count;
         }
 
         public void Preprocess(Point[] points)
         {
             //строим дерево, в начале сортируем по X
             Tree = TreeNode.BuildTree(points.ToList(), 0);
-            searchedPoins = new List<Point>();
         }
 
         public void SearchAfterProprocessing(Rectangle window)
         {
+            searchedPoins = new List<Point>();
             var windowWithoutBorders = new Rectangle(window.X + 1, window.Y + 1, window.Width - 2, window.Height - 2);
             TreeTraversal(Tree, windowWithoutBorders, 0);
+            searchedCount = searchedPoins.Count;
         }
 
         //Поиск по дереву, axes: x=0, y=1
