@@ -31,7 +31,7 @@ namespace SearchCore
             searchedPoins = new List<Point>();
             var windowWithoutBorders = new Rectangle(window.X + 1, window.Y + 1, window.Width - 2, window.Height - 2);
             TreeTraversal(Tree, windowWithoutBorders, 0);
-            //searchedCount = searchedPoins.Count;
+            searchedCount = searchedPoins.Count;
         }
 
         //Поиск по дереву, axes: x=0, y=1
@@ -43,8 +43,7 @@ namespace SearchCore
             var point = node.Point;
             if (window.Left <= point.X && window.Top <= point.Y)
                 if (window.Right >= point.X && window.Bottom >= point.Y)
-                    //searchedPoins.Add(point);
-                    searchedCount++;
+                    searchedPoins.Add(point);
             //если у нее нет потомков
             if (node.Left == null && node.Right == null)
             {

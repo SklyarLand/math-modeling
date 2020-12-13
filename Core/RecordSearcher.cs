@@ -139,7 +139,7 @@ namespace SearchCore
                     {
                         searchTime = GetSearchTime(search, window, points, koefArray[0]);
                     }
-
+                    GC.Collect();
                     string output = String.Format("{0},{1},{2},{3}", search.Name, preproceccingTime, searchTime, pointCount);
                     dataArray.Add(output);
                 }
@@ -199,36 +199,41 @@ namespace SearchCore
         private double GetPreprocessingTime(IPreprocessable preprocessable, Rectangle window, Point[] points, int circleCount)
         {
             var stopwatch = new Stopwatch();
-            stopwatch.Start();
             for (int i = 0; i < circleCount; i++)
             {
+                stopwatch.Start();
                 preprocessable.Preprocess(points);
+                stopwatch.Stop();
             }
-            stopwatch.Stop();
+            
             var millisecondsInLong = stopwatch.ElapsedMilliseconds;
             return ((double)millisecondsInLong) / circleCount;
         }
         private double GetSearchTime(IPreprocessable preprocessable, Rectangle window, int circleCount) 
         {
             var stopwatch = new Stopwatch();
-            stopwatch.Start();
+
             for (int i = 0; i < circleCount; i++)
             {
+                stopwatch.Start();
                 preprocessable.SearchAfterProprocessing(window);
+                stopwatch.Stop();
             }
-            stopwatch.Stop();
+            
             var millisecondsInLong = stopwatch.ElapsedMilliseconds;
             return ((double)millisecondsInLong) / circleCount;
         }
         private double GetSearchTime(Search search, Rectangle window, Point[] points, int circleCount)
         {
             var stopwatch = new Stopwatch();
-            stopwatch.Start();
+            
             for (int i = 0; i < circleCount; i++)
             {
+                stopwatch.Start();
                 search.Run(points, window);
+                stopwatch.Stop();
             }
-            stopwatch.Stop();
+            
             var millisecondsInLong = stopwatch.ElapsedMilliseconds;
             return ((double)millisecondsInLong) / circleCount;
         }

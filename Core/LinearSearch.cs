@@ -18,10 +18,9 @@ namespace SearchCore
             {
                 if (rectangle.Left < point.X && rectangle.Top < point.Y)
                     if (rectangle.Right > point.X && rectangle.Bottom > point.Y)
-                        //searchedPoins.Add(point);
-                        searchedCount++;
+                        searchedPoins.Add(point);
             }
-            //searchedCount = searchedPoins.Count;
+            searchedCount = searchedPoins.Count;
         }
     }
 }
